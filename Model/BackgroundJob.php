@@ -16,8 +16,7 @@ namespace Accurateweb\BackgroundJobBundle\Model;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity()
- * @ORM\Table(name="background_job")
+ * @ORM\MappedSuperclass()
  */
 abstract class BackgroundJob
 {
