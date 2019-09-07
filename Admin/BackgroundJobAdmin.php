@@ -73,7 +73,7 @@ class BackgroundJobAdmin extends AbstractAdmin
 
   protected function configureDatagridFilters (DatagridMapper $filter)
   {
-    $allTasks = $this->getConfigurationPool()->getContainer()->get('aw.bg_job.background_job_pool')->getBackgroundJobs();
+    $allTasks = $this->getConfigurationPool()->getContainer()->get('aw.task_scheduler.background_job_pool')->getBackgroundJobs();
     $taskChoices = [];
 
     foreach ($allTasks as $allTask)

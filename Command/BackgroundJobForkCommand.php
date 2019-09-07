@@ -21,12 +21,12 @@ class BackgroundJobForkCommand extends AbstractForkCommand
   public function startLoop (InputInterface $input)
   {
     $this->logger->block('Start job dispatcher', 'daemon', 'fg=green');
-    $this->getContainer()->get('aw.bg_job.background_job_dispatcher')->dispatch();
+    $this->getContainer()->get('aw.task_scheduler.background_job_dispatcher')->dispatch();
   }
 
   public function stopLoop ()
   {
     $this->logger->block('Stop loop', 'daemon', 'fg=green');
-    $this->getContainer()->get('aw.bg_job.background_job_dispatcher')->stop();
+    $this->getContainer()->get('aw.task_scheduler.background_job_dispatcher')->stop();
   }
 }

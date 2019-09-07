@@ -44,7 +44,7 @@ class BackgroundJobDaemonCommand extends ContainerAwareCommand
       throw new InvalidArgumentException(sprintf('Available commands: start, stop, restart'));
     }
 
-    $isLocked = !$this->lock($this->getContainer()->get('aw.bg_job.background_job_dispatcher')->getUid());
+    $isLocked = !$this->lock($this->getContainer()->get('aw.task_scheduler.background_job_dispatcher')->getUid());
 
     if ($isLocked && $argument == 'start')
     {
@@ -87,12 +87,12 @@ class BackgroundJobDaemonCommand extends ContainerAwareCommand
     }
 
     $launcher = new BackgroundCommandLineLauncher(
-      $this->getContainer()->get('aw.bg_job.php_command_line'),
+      $this->getContainer()->get('aw.task_scheduler.php_command_line'),
       $logger,
       sprintf('%s/daemon.log', $logDir)
     );
 
-    $pidStorage = $this->getContainer()->get('aw.bg_job.daemon_pid_storage');
+    $pidStorage = $this->getContainer()->get('aw.task_scheduler.daemon_pid_storage');
 
     if (in_array($argument, ['stop', 'restart']))
     {

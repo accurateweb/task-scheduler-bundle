@@ -21,8 +21,8 @@ class BackgroundJobPoolCompilerPass implements CompilerPassInterface
 {
   public function process (ContainerBuilder $container)
   {
-    $jobs = $container->findTaggedServiceIds('aw.bg_job');
-    $pool = $container->getDefinition('aw.bg_job.background_job_pool');
+    $jobs = $container->findTaggedServiceIds('aw.schedulable_task');
+    $pool = $container->getDefinition('aw.task_scheduler.background_job_pool');
 
     foreach ($jobs as $id => $tags)
     {

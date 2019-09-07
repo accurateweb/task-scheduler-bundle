@@ -22,7 +22,7 @@ class BackgroundJobAdminCompilerPass implements CompilerPassInterface
 {
   public function process (ContainerBuilder $container)
   {
-    $param = $container->getParameter('aw_bg.background_job_repository');
+    $param = $container->getParameter('aw.task_scheduler.background_job_repository');
 
     try
     {
@@ -37,7 +37,7 @@ class BackgroundJobAdminCompilerPass implements CompilerPassInterface
      * Это сработает, только если репозиторий был объявлен с помощью фабрики
      */
     $class = $repository->getArgument(0);
-    $admin = $container->getDefinition('aw.bg_job.admin');
+    $admin = $container->getDefinition('aw.task_scheduler.admin');
     $admin->setArgument(1, $class);
   }
 }

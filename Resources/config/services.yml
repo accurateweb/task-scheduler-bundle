@@ -1,69 +1,71 @@
 parameters:
-  aw_bg.background_job_repository: ~
-  aw_bg.admin_name: 'Фоновые задачи'
-  aw_bg.admin_group: settings
-  aw.bg_job.uid: 'background-job'
+  aw.task_scheduler.background_job_repository: ~
+  aw.task_scheduler.admin_name: 'Фоновые задачи'
+  aw.task_scheduler.admin_group: settings
+  aw.task_scheduler.uid: 'background-job'
+  php_executable: /usr/bin/php
+
 services:
-  aw.bg_job.php_command_line:
-    class: Accurateweb\BackgroundJobBundle\Service\Command\PhpCommandLineResolver
+  aw.task_scheduler.php_command_line:
+    class: Accurateweb\TaskSchedulerBundle\Service\Command\PhpCommandLineResolver
     arguments: ['%kernel.root_dir%', '%php_executable%']
 
-  aw.bg_job.daemon_pid_storage:
-    class: Accurateweb\BackgroundJobBundle\Service\DaemonPidStorage
+  aw.task_scheduler.daemon_pid_storage:
+    class: Accurateweb\TaskSchedulerBundle\Service\DaemonPidStorage
     arguments: ['%kernel.root_dir%/../var/logs']
 
-  aw.bg_job.launcher.factory:
-    class: Accurateweb\BackgroundJobBundle\Service\Command\CommandLineLauncherFactory
-    arguments: ['@aw.bg_job.php_command_line', '@aw.bg_job.logger.factory', '%kernel.environment%']
+  aw.task_scheduler.launcher.factory:
+    class: Accurateweb\TaskSchedulerBundle\Service\Command\CommandLineLauncherFactory
+    arguments: ['@aw.task_scheduler.php_command_line', '@aw.task_scheduler.logger.factory', '%kernel.environment%']
 
-  aw.bg_job.background_job_log_file_resolver:
-    class: Accurateweb\BackgroundJobBundle\Service\Logger\BackgroundJobLogFileResolver
+  aw.task_scheduler.background_job_log_file_resolver:
+    class: Accurateweb\TaskSchedulerBundle\Service\Logger\BackgroundJobLogFileResolver
     arguments: ['%kernel.root_dir%/../var/logs']
 
-  aw.bg_job.logger.factory:
-    class: Accurateweb\BackgroundJobBundle\Service\Logger\BackgroundJobLoggerFactory
-    arguments: ['@aw.bg_job.background_job_log_file_resolver']
+  aw.task_scheduler.logger.factory:
+    class: Accurateweb\TaskSchedulerBundle\Service\Logger\BackgroundJobLoggerFactory
+    arguments: ['@aw.task_scheduler.background_job_log_file_resolver']
 
-  aw.bg_job.background_job_pool:
-    class: Accurateweb\BackgroundJobBundle\Service\BackgroundJob\BackgroundJobPool
+  aw.task_scheduler.background_job_pool:
+    class: Accurateweb\TaskSchedulerBundle\Service\BackgroundJob\BackgroundJobPool
 
-  aw.bg_job.background_job_manager:
-    class: Accurateweb\BackgroundJobBundle\Service\BackgroundJob\BackgroundJobManager
-    arguments: [~, '@aw.bg_job.background_job_pool', '@event_dispatcher', '@doctrine.orm.entity_manager']
+  aw.task_scheduler.background_job_manager:
+    class: Accurateweb\TaskSchedulerBundle\Service\BackgroundJob\BackgroundJobManager
+    arguments: [~, '@aw.task_scheduler.background_job_pool', '@event_dispatcher', '@doctrine.orm.entity_manager']
 
-  aw.bg_job.background_job_dispatcher:
-    class: Accurateweb\BackgroundJobBundle\Service\BackgroundJobDispatcher\BackgroundJobDispatcher
+  aw.task_scheduler.background_job_dispatcher:
+    class: Accurateweb\TaskSchedulerBundle\Service\BackgroundJobDispatcher\BackgroundJobDispatcher
     arguments:
-     - '@aw.bg_job.background_job_manager'
+     - '@aw.task_scheduler.background_job_manager'
      - '@event_dispatcher'
      - '@doctrine.orm.entity_manager'
-     - '@aw.bg_job.background_job_pool'
-     - '@aw.bg_job.launcher.factory'
-     - '%aw.bg_job.uid%'
-     - '@aw.bg_job.dispatcher_logger'
+     - '@aw.task_scheduler.background_job_pool'
+     - '@aw.task_scheduler.launcher.factory'
+     - '%aw.task_scheduler.uid%'
+     - '@aw.task_scheduler.dispatcher_logger'
 
   accurateweb_background_job.service_logger.background_job_dispatcher_logger_factory:
-    class: Accurateweb\BackgroundJobBundle\Service\Logger\BackgroundJobDispatcherLoggerFactory
+    class: Accurateweb\TaskSchedulerBundle\Service\Logger\BackgroundJobDispatcherLoggerFactory
 
-  aw.bg_job.dispatcher_logger:
+  aw.task_scheduler.dispatcher_logger:
     class: Psr\Log\LoggerInterface
     factory: ['@accurateweb_background_job.service_logger.background_job_dispatcher_logger_factory', 'createLogger']
     arguments: ['%kernel.logs_dir%/background_job/daemon.log']
 
-  aw.bg_job.interupt:
-    class: Accurateweb\BackgroundJobBundle\EventListener\InterruptJobs
-    arguments: ['@doctrine.orm.entity_manager', '@aw.bg_job.background_job_manager']
+  aw.task_scheduler.interupt:
+    class: Accurateweb\TaskSchedulerBundle\EventListener\InterruptJobs
+    arguments: ['@doctrine.orm.entity_manager', '@aw.task_scheduler.background_job_manager']
     tags:
       - { name: kernel.event_listener, event: background_job.dispatch.start, method: onStart }
 
-  aw.bg_job.admin:
-    class: Accurateweb\BackgroundJobBundle\Admin\BackgroundJobAdmin
-    arguments: [~, ~, 'AccuratewebBackgroundJobBundle:BackgroundJobCRUD', '@aw.bg_job.background_job_log_file_resolver']
+  aw.task_scheduler.admin:
+    class: Accurateweb\TaskSchedulerBundle\Admin\BackgroundJobAdmin
+    arguments: [~, ~, 'AccuratewebTaskSchedulerBundle:BackgroundJobCRUD', '@aw.task_scheduler.background_job_log_file_resolver']
     tags:
-      - { name: sonata.admin, manager_type: orm, group: '%aw_bg.admin_group%', label: '%aw_bg.admin_name%' }
+      - { name: sonata.admin, manager_type: orm, group: '%aw.task_scheduler.admin_group%', label: '%aw.task_scheduler.admin_name%' }
 
-  aw.bg_job.repeat_listener:
-    class: Accurateweb\BackgroundJobBundle\EventListener\RepeatJobListener
-    arguments: ['@aw.bg_job.background_job_manager']
+  aw.task_scheduler.repeat_listener:
+    class: Accurateweb\TaskSchedulerBundle\EventListener\RepeatJobListener
+    arguments: ['@aw.task_scheduler.background_job_manager']
     tags:
       - { name: kernel.event_listener, event: job.end, method: onJobEnd }

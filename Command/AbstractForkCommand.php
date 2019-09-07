@@ -32,7 +32,7 @@ abstract class AbstractForkCommand extends ContainerAwareCommand
    */
   protected function getPidFile ()
   {
-    $uid = $this->getContainer()->get('aw.bg_job.background_job_dispatcher')->getUid();
+    $uid = $this->getContainer()->get('aw.task_scheduler.background_job_dispatcher')->getUid();
     return sprintf('%s/background_job/%s.pid', $this->getContainer()->getParameter('kernel.logs_dir'), $uid);
   }
 

@@ -33,14 +33,14 @@ class BackgroundJobDispatchCommand extends ContainerAwareCommand
 
   protected function execute (InputInterface $input, OutputInterface $output)
   {
-    if (!$this->lock($this->getContainer()->get('aw.bg_job.background_job_dispatcher')->getUid()))
+    if (!$this->lock($this->getContainer()->get('aw.task_scheduler.background_job_dispatcher')->getUid()))
     {
       $output->writeln('Another instance of background job dispatcher appears to be running already');
       return 0;
     }
 
     $output->writeln('Start background job dispatcher...');
-    $this->getContainer()->get('aw.bg_job.background_job_dispatcher')->dispatch();
+    $this->getContainer()->get('aw.task_scheduler.background_job_dispatcher')->dispatch();
   }
 
 }
