@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Accurateweb\BackgroundJobBundle\Command;
+namespace Accurateweb\TaskSchedulerBundle\Command;
 
 use Cocur\BackgroundProcess\BackgroundProcess;
 use Psr\Log\LogLevel;

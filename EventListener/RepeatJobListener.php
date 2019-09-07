@@ -11,11 +11,11 @@
  *   Ответственность за нарушение авторских прав наступает в соответствии с действующим законодательством РФ.
  */
 
-namespace Accurateweb\BackgroundJobBundle\EventListener;
+namespace Accurateweb\TaskSchedulerBundle\EventListener;
 
-use Accurateweb\BackgroundJobBundle\Event\BackgroundJobEvent;
-use Accurateweb\BackgroundJobBundle\Service\BackgroundJob\BackgroundJobManager;
-use Accurateweb\BackgroundJobBundle\Service\BackgroundJob\RepeatedBackgroundJobInterface;
+use Accurateweb\TaskSchedulerBundle\Event\BackgroundJobEvent;
+use Accurateweb\TaskSchedulerBundle\Service\BackgroundJob\BackgroundJobManager;
+use Accurateweb\TaskSchedulerBundle\Service\BackgroundJob\RepeatedBackgroundJobInterface;
 
 /*
  * Добавляет в очередь команды, которые необходимо повторить

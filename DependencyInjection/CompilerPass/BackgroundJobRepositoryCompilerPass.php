@@ -11,7 +11,7 @@
  *   Ответственность за нарушение авторских прав наступает в соответствии с действующим законодательством РФ.
  */
 
-namespace Accurateweb\BackgroundJobBundle\DependencyInjection\CompilerPass;
+namespace Accurateweb\TaskSchedulerBundle\DependencyInjection\CompilerPass;
 
 
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;

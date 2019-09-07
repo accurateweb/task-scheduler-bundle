@@ -11,10 +11,10 @@
  *   Ответственность за нарушение авторских прав наступает в соответствии с действующим законодательством РФ.
  */
 
-namespace Accurateweb\BackgroundJobBundle\Admin;
+namespace Accurateweb\TaskSchedulerBundle\Admin;
 
-use Accurateweb\BackgroundJobBundle\Model\BackgroundJob;
-use Accurateweb\BackgroundJobBundle\Service\Logger\BackgroundJobLogFileResolver;
+use Accurateweb\TaskSchedulerBundle\Model\BackgroundJob;
+use Accurateweb\TaskSchedulerBundle\Service\Logger\BackgroundJobLogFileResolver;
 use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;

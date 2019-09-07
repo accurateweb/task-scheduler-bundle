@@ -11,9 +11,9 @@
  *   Ответственность за нарушение авторских прав наступает в соответствии с действующим законодательством РФ.
  */
 
-namespace Accurateweb\BackgroundJobBundle\Command;
+namespace Accurateweb\TaskSchedulerBundle\Command;
 
-use Accurateweb\BackgroundJobBundle\Service\Command\BackgroundCommandLineLauncher;
+use Accurateweb\TaskSchedulerBundle\Service\Command\BackgroundCommandLineLauncher;
 use Cocur\BackgroundProcess\BackgroundProcess;
 use Psr\Log\LogLevel;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;

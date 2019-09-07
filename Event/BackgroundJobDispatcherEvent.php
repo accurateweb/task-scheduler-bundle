@@ -11,7 +11,7 @@
  *   Ответственность за нарушение авторских прав наступает в соответствии с действующим законодательством РФ.
  */
 
-namespace Accurateweb\BackgroundJobBundle\Event;
+namespace Accurateweb\TaskSchedulerBundle\Event;
 
 use Symfony\Component\EventDispatcher\Event;
 

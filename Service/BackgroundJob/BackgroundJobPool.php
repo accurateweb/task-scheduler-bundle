@@ -11,9 +11,9 @@
  *   Ответственность за нарушение авторских прав наступает в соответствии с действующим законодательством РФ.
  */
 
-namespace Accurateweb\BackgroundJobBundle\Service\BackgroundJob;
+namespace Accurateweb\TaskSchedulerBundle\Service\BackgroundJob;
 
-use Accurateweb\BackgroundJobBundle\Exception\BackgroundJobNotExistsException;
+use Accurateweb\TaskSchedulerBundle\Exception\BackgroundJobNotExistsException;
 
 class BackgroundJobPool
 {

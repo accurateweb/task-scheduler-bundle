@@ -11,7 +11,7 @@
  *   Ответственность за нарушение авторских прав наступает в соответствии с действующим законодательством РФ.
  */
 
-namespace Accurateweb\BackgroundJobBundle\Model;
+namespace Accurateweb\TaskSchedulerBundle\Model;
 
 use Doctrine\Common\Persistence\ObjectRepository;
 

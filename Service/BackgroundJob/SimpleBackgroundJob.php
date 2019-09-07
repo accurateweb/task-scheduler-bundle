@@ -11,10 +11,10 @@
  *   Ответственность за нарушение авторских прав наступает в соответствии с действующим законодательством РФ.
  */
 
-namespace Accurateweb\BackgroundJobBundle\Service\BackgroundJob;
+namespace Accurateweb\TaskSchedulerBundle\Service\BackgroundJob;
 
 
-use Accurateweb\BackgroundJobBundle\Model\MetaData;
+use Accurateweb\TaskSchedulerBundle\Model\MetaData;
 
 class SimpleBackgroundJob implements BackgroundJobInterface
 {

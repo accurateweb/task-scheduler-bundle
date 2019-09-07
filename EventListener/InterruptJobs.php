@@ -11,12 +11,12 @@
  *   Ответственность за нарушение авторских прав наступает в соответствии с действующим законодательством РФ.
  */
 
-namespace Accurateweb\BackgroundJobBundle\EventListener;
+namespace Accurateweb\TaskSchedulerBundle\EventListener;
 
-use Accurateweb\BackgroundJobBundle\Event\BackgroundJobDispatcherEvent;
-use Accurateweb\BackgroundJobBundle\Model\BackgroundJob;
-use Accurateweb\BackgroundJobBundle\Model\BackgroundJobFilter;
-use Accurateweb\BackgroundJobBundle\Service\BackgroundJob\BackgroundJobManager;
+use Accurateweb\TaskSchedulerBundle\Event\BackgroundJobDispatcherEvent;
+use Accurateweb\TaskSchedulerBundle\Model\BackgroundJob;
+use Accurateweb\TaskSchedulerBundle\Model\BackgroundJobFilter;
+use Accurateweb\TaskSchedulerBundle\Service\BackgroundJob\BackgroundJobManager;
 use Doctrine\ORM\EntityManager;
 
 class InterruptJobs

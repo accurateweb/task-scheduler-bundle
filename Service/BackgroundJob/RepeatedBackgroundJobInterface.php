@@ -11,7 +11,7 @@
  *   Ответственность за нарушение авторских прав наступает в соответствии с действующим законодательством РФ.
  */
 
-namespace Accurateweb\BackgroundJobBundle\Service\BackgroundJob;
+namespace Accurateweb\TaskSchedulerBundle\Service\BackgroundJob;
 
 /*
  * Повторяющиеся задачи. Будет заново добавлена в очередь после выполнения, если isNeedRepeat вернет true

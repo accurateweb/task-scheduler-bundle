@@ -11,7 +11,7 @@
  *   Ответственность за нарушение авторских прав наступает в соответствии с действующим законодательством РФ.
  */
 
-namespace Accurateweb\BackgroundJobBundle\Service\BackgroundJob;
+namespace Accurateweb\TaskSchedulerBundle\Service\BackgroundJob;
 
 /*
  * Отложенные задачи, не будут запущены, пока isReady не вернет true. До этого момента продолжают лежать в очереди

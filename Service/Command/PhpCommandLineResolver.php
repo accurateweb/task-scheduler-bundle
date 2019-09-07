@@ -11,9 +11,9 @@
  *   Ответственность за нарушение авторских прав наступает в соответствии с действующим законодательством РФ.
  */
 
-namespace Accurateweb\BackgroundJobBundle\Service\Command;
+namespace Accurateweb\TaskSchedulerBundle\Service\Command;
 
-use Accurateweb\BackgroundJobBundle\Exception\PhpBinNotFoundException;
+use Accurateweb\TaskSchedulerBundle\Exception\PhpBinNotFoundException;
 use Symfony\Component\Process\PhpExecutableFinder;
 
 class PhpCommandLineResolver

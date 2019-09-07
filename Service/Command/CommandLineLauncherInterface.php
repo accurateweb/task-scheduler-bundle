@@ -11,7 +11,7 @@
  *   Ответственность за нарушение авторских прав наступает в соответствии с действующим законодательством РФ.
  */
 
-namespace Accurateweb\BackgroundJobBundle\Service\Command;
+namespace Accurateweb\TaskSchedulerBundle\Service\Command;
 
 
 interface CommandLineLauncherInterface

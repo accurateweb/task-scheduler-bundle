@@ -11,13 +11,13 @@
  *   Ответственность за нарушение авторских прав наступает в соответствии с действующим законодательством РФ.
  */
 
-namespace Accurateweb\BackgroundJobBundle\Service\BackgroundJob;
+namespace Accurateweb\TaskSchedulerBundle\Service\BackgroundJob;
 
-use Accurateweb\BackgroundJobBundle\Event\BackgroundJobEvent;
-use Accurateweb\BackgroundJobBundle\Model\BackgroundJob;
-use Accurateweb\BackgroundJobBundle\Model\BackgroundJobFilter;
-use Accurateweb\BackgroundJobBundle\Model\BackgroundJobRepositoryInterface;
-use Accurateweb\BackgroundJobBundle\Model\MetaData;
+use Accurateweb\TaskSchedulerBundle\Event\BackgroundJobEvent;
+use Accurateweb\TaskSchedulerBundle\Model\BackgroundJob;
+use Accurateweb\TaskSchedulerBundle\Model\BackgroundJobFilter;
+use Accurateweb\TaskSchedulerBundle\Model\BackgroundJobRepositoryInterface;
+use Accurateweb\TaskSchedulerBundle\Model\MetaData;
 use Doctrine\ORM\EntityManager;
 use Sonata\CoreBundle\Exception\InvalidParameterException;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
@@ -43,7 +43,7 @@ class BackgroundJobManager
 
   /**
    * @param $clsid
-   * @throws \Accurateweb\BackgroundJobBundle\Exception\BackgroundJobNotExistsException
+   * @throws \Accurateweb\TaskSchedulerBundle\Exception\BackgroundJobNotExistsException
    */
   public function addToQueueByClsid($clsid)
   {

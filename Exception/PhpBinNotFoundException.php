@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Accurateweb\BackgroundJobBundle\Exception;
+namespace Accurateweb\TaskSchedulerBundle\Exception;
 
 
 class PhpBinNotFoundException extends \Exception

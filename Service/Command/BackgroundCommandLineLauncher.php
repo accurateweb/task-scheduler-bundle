@@ -11,7 +11,7 @@
  *   Ответственность за нарушение авторских прав наступает в соответствии с действующим законодательством РФ.
  */
 
-namespace Accurateweb\BackgroundJobBundle\Service\Command;
+namespace Accurateweb\TaskSchedulerBundle\Service\Command;
 
 use Cocur\BackgroundProcess\BackgroundProcess;
 use Psr\Log\LoggerInterface;

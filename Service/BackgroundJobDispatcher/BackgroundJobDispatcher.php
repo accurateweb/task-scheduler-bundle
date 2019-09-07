@@ -11,15 +11,15 @@
  *   Ответственность за нарушение авторских прав наступает в соответствии с действующим законодательством РФ.
  */
 
-namespace Accurateweb\BackgroundJobBundle\Service\BackgroundJobDispatcher;
+namespace Accurateweb\TaskSchedulerBundle\Service\BackgroundJobDispatcher;
 
-use Accurateweb\BackgroundJobBundle\Event\BackgroundJobDispatcherEvent;
-use Accurateweb\BackgroundJobBundle\Event\BackgroundJobEvent;
-use Accurateweb\BackgroundJobBundle\Model\BackgroundJob;
-use Accurateweb\BackgroundJobBundle\Service\BackgroundJob\BackgroundJobManager;
-use Accurateweb\BackgroundJobBundle\Service\BackgroundJob\BackgroundJobPool;
-use Accurateweb\BackgroundJobBundle\Service\BackgroundJob\DeferredBackgroundJobInterface;
-use Accurateweb\BackgroundJobBundle\Service\Command\CommandLineLauncherFactory;
+use Accurateweb\TaskSchedulerBundle\Event\BackgroundJobDispatcherEvent;
+use Accurateweb\TaskSchedulerBundle\Event\BackgroundJobEvent;
+use Accurateweb\TaskSchedulerBundle\Model\BackgroundJob;
+use Accurateweb\TaskSchedulerBundle\Service\BackgroundJob\BackgroundJobManager;
+use Accurateweb\TaskSchedulerBundle\Service\BackgroundJob\BackgroundJobPool;
+use Accurateweb\TaskSchedulerBundle\Service\BackgroundJob\DeferredBackgroundJobInterface;
+use Accurateweb\TaskSchedulerBundle\Service\Command\CommandLineLauncherFactory;
 use Doctrine\ORM\EntityManager;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;

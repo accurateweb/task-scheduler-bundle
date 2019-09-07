@@ -11,11 +11,11 @@
  *   Ответственность за нарушение авторских прав наступает в соответствии с действующим законодательством РФ.
  */
 
-namespace Accurateweb\BackgroundJobBundle;
+namespace Accurateweb\TaskSchedulerBundle;
 
-use Accurateweb\BackgroundJobBundle\DependencyInjection\CompilerPass\BackgroundJobAdminCompilerPass;
-use Accurateweb\BackgroundJobBundle\DependencyInjection\CompilerPass\BackgroundJobPoolCompilerPass;
-use Accurateweb\BackgroundJobBundle\DependencyInjection\CompilerPass\BackgroundJobRepositoryCompilerPass;
+use Accurateweb\TaskSchedulerBundle\DependencyInjection\CompilerPass\BackgroundJobAdminCompilerPass;
+use Accurateweb\TaskSchedulerBundle\DependencyInjection\CompilerPass\BackgroundJobPoolCompilerPass;
+use Accurateweb\TaskSchedulerBundle\DependencyInjection\CompilerPass\BackgroundJobRepositoryCompilerPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

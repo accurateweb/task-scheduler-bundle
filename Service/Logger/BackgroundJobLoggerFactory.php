@@ -11,10 +11,10 @@
  *   Ответственность за нарушение авторских прав наступает в соответствии с действующим законодательством РФ.
  */
 
-namespace Accurateweb\BackgroundJobBundle\Service\Logger;
+namespace Accurateweb\TaskSchedulerBundle\Service\Logger;
 
-use Accurateweb\BackgroundJobBundle\Model\BackgroundJob;
-use Accurateweb\BackgroundJobBundle\Model\BackgroundJobRepositoryInterface;
+use Accurateweb\TaskSchedulerBundle\Model\BackgroundJob;
+use Accurateweb\TaskSchedulerBundle\Model\BackgroundJobRepositoryInterface;
 
 class BackgroundJobLoggerFactory
 {

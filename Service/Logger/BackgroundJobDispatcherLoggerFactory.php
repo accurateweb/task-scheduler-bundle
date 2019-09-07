@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Accurateweb\BackgroundJobBundle\Service\Logger;
+namespace Accurateweb\TaskSchedulerBundle\Service\Logger;
 
 use Psr\Log\LoggerInterface;
 use Psr\Log\LogLevel;
