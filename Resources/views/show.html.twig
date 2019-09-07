@@ -1,0 +1,16 @@
+{% extends '@SonataAdmin/CRUD/base_show.html.twig' %}
+
+{% block show_field %}
+    {% if field_name == 'output' %}
+        <tr class="sonata-ba-view-container">
+            <td colspan="2"><pre>{{ admin.backgroundJobOutput(object) }}</pre></td>
+        </tr>
+    {% elseif field_name == 'command' %}
+        <tr class="sonata-ba-view-container">
+            <th>Команда</th>
+            <td>{{ admin.getSafeCommand(object) }}</td>
+        </tr>
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

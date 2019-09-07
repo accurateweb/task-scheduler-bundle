@@ -1,0 +1,11 @@
+{
+  "name": "accurateweb/task-scheduler-bundle",
+  "autoload": {
+    "psr-4" : {
+      "Accurateweb\\TaskSchedulerBundle\\" : ""
+    }
+  },
+  "require": {
+    "php": ">=5.4"
+  }
+}
