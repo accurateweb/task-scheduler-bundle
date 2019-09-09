@@ -22,7 +22,7 @@ class BackgroundJobRepositoryCompilerPass implements CompilerPassInterface
 {
   public function process (ContainerBuilder $container)
   {
-    $param = $container->getParameter('aw_bg.background_job_repository');
+    $param = $container->getParameter('aw.task_scheduler.background_job_repository');
 
     try
     {
@@ -30,7 +30,9 @@ class BackgroundJobRepositoryCompilerPass implements CompilerPassInterface
     }
     catch (ServiceNotFoundException $e)
     {
-
+      /**
+       * @FIXME: Handle exception
+       */
     }
 
     $manager = $container->getDefinition('aw.task_scheduler.background_job_manager');
