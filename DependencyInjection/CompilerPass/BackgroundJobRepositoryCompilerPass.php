@@ -36,7 +36,7 @@ class BackgroundJobRepositoryCompilerPass implements CompilerPassInterface
     }
 
     $manager = $container->getDefinition('aw.task_scheduler.background_job_manager');
-    $manager->setArgument(0, $repository);
+    $manager->replaceArgument(0, $repository);
   }
 
 }
