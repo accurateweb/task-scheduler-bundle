@@ -29,9 +29,7 @@ class Configuration implements ConfigurationInterface
   public function getConfigTreeBuilder ()
   {
     $treeBuilder = new TreeBuilder();
-    $rootNode = $treeBuilder->root('accurateweb_background_job');
-
-
+    $rootNode = $treeBuilder->root('accurateweb_task_scheduler');
 
     return $treeBuilder;
   }
