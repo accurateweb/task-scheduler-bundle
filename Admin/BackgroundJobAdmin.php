@@ -106,7 +106,7 @@ class BackgroundJobAdmin extends AbstractAdmin
   {
     if ($name == 'show')
     {
-      return 'AccuratewebBackgroundJobBundle::show.html.twig';
+      return 'AccuratewebTaskSchedulerBundle::show.html.twig';
     }
 
     return parent::getTemplate($name);

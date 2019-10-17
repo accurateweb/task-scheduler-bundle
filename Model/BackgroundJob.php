@@ -88,9 +88,9 @@ abstract class BackgroundJob
 
   /**
    * @var integer
-   * @ORM\Column(type="integer")
+   * @ORM\Column(type="integer", options={"default"=0})
    */
-  protected $progress;
+  protected $progress = 0;
 
   /**
    * @return int

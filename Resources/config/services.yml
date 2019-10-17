@@ -12,7 +12,7 @@ services:
 
   aw.task_scheduler.daemon_pid_storage:
     class: Accurateweb\TaskSchedulerBundle\Service\DaemonPidStorage
-    arguments: ['%kernel.root_dir%/../var/logs']
+    arguments: ['%kernel.logs_dir%']
 
   aw.task_scheduler.launcher.factory:
     class: Accurateweb\TaskSchedulerBundle\Service\Command\CommandLineLauncherFactory
@@ -20,7 +20,7 @@ services:
 
   aw.task_scheduler.background_job_log_file_resolver:
     class: Accurateweb\TaskSchedulerBundle\Service\Logger\BackgroundJobLogFileResolver
-    arguments: ['%kernel.root_dir%/../var/logs']
+    arguments: ['%kernel.logs_dir%']
 
   aw.task_scheduler.logger.factory:
     class: Accurateweb\TaskSchedulerBundle\Service\Logger\BackgroundJobLoggerFactory
