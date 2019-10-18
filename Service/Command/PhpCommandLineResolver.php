@@ -14,6 +14,7 @@
 namespace Accurateweb\TaskSchedulerBundle\Service\Command;
 
 use Accurateweb\TaskSchedulerBundle\Exception\PhpBinNotFoundException;
+use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Process\PhpExecutableFinder;
 
 class PhpCommandLineResolver
@@ -50,6 +51,11 @@ class PhpCommandLineResolver
     if (!$php)
     {
       throw new PhpBinNotFoundException();
+    }
+
+    if (version_compare(Kernel::VERSION, '3.0', '<'))
+    {
+      return sprintf('%s %s/../app/console', $php, $this->kernelDir);
     }
 
     return sprintf('%s %s/../bin/console', $php, $this->kernelDir);

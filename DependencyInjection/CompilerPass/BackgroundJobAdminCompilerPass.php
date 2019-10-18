@@ -38,6 +38,6 @@ class BackgroundJobAdminCompilerPass implements CompilerPassInterface
      */
     $class = $repository->getArgument(0);
     $admin = $container->getDefinition('aw.task_scheduler.admin');
-    $admin->setArgument(1, $class);
+    $admin->replaceArgument(1, $class);
   }
 }

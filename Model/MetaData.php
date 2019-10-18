@@ -108,15 +108,13 @@ class MetaData implements \Serializable
 
   public function unserialize($serialized)
   {
-    $data = json_decode($serialized);
+    $data = json_decode($serialized, true);
 
     $this->cmdArguments = (isset($data['cmdArguments']) && is_array($data['cmdArguments'])) ?
-      $serialized['cmdArguments'] : [];
+      $data['cmdArguments'] : [];
     $this->cmdOptions = (isset($data['cmdOptions']) && is_array($data['cmdOptions'])) ?
-      $serialized['cmdOptions'] : [];;
+      $data['cmdOptions'] : [];;
     $this->options = (isset($data['options']) && is_array($data['options'])) ?
-      $serialized['options'] : [];;
+      $data['options'] : [];;
   }
-
-
 }
