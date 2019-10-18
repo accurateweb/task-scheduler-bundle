@@ -15,14 +15,14 @@ namespace Accurateweb\TaskSchedulerBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Command\LockableTrait;
+use Symfony\Component\Console\Exception\LogicException;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Filesystem\Filesystem;
 
 class BackgroundJobDispatchCommand extends ContainerAwareCommand
 {
-  use LockableTrait;
-
   protected function configure ()
   {
     $this
@@ -43,4 +43,35 @@ class BackgroundJobDispatchCommand extends ContainerAwareCommand
     $this->getContainer()->get('aw.task_scheduler.background_job_dispatcher')->dispatch();
   }
 
+  /**
+   * Locks a command.
+   *
+   * @param null $name
+   * @return bool
+   */
+  private function lock ($name = null)
+  {
+    $logDir = realpath($this->getContainer()->getParameter('kernel.logs_dir'));
+    $filename = sprintf('%s/%s', $logDir, $name);
+    $fs = new Filesystem();
+
+    if (!$fs->exists($filename))
+    {
+      $fs->touch($filename);
+    }
+
+    $fp = fopen($filename, 'c+');
+
+    if (!is_resource($fp))
+    {
+      throw new LogicException('Unable to acquire lock');
+    }
+
+    if (!flock($fp, LOCK_EX | LOCK_NB))
+    {
+      return false;
+    }
+
+    return true;
+  }
 }

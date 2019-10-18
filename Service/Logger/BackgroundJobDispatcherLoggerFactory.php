@@ -8,6 +8,7 @@ use Psr\Log\LogLevel;
 use Symfony\Component\Console\Logger\ConsoleLogger;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Output\StreamOutput;
+use Symfony\Component\Filesystem\Filesystem;
 
 class BackgroundJobDispatcherLoggerFactory
 {
@@ -17,6 +18,19 @@ class BackgroundJobDispatcherLoggerFactory
    */
   public function createLogger ($logFile)
   {
+    $fs = new Filesystem();
+    $dirname = dirname($logFile);
+
+    if (!$fs->exists($dirname))
+    {
+      $fs->mkdir($dirname);
+    }
+
+    if (!$fs->exists($logFile))
+    {
+      $fs->touch($logFile);
+    }
+
     $logger = new ConsoleLogger(
       new StreamOutput(fopen($logFile, 'a'), [
         LogLevel::NOTICE => OutputInterface::VERBOSITY_NORMAL,
