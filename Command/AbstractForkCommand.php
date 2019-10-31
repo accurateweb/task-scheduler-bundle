@@ -3,15 +3,11 @@
 
 namespace Accurateweb\TaskSchedulerBundle\Command;
 
-use Cocur\BackgroundProcess\BackgroundProcess;
-use Psr\Log\LogLevel;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Logger\ConsoleLogger;
 use Symfony\Component\Console\Output\ConsoleOutputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Output\StreamOutput;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
 abstract class AbstractForkCommand extends ContainerAwareCommand
@@ -112,9 +108,8 @@ abstract class AbstractForkCommand extends ContainerAwareCommand
     }
 
     $pid = file_get_contents($this->pidFile);
-    $process = BackgroundProcess::createFromPID($pid);
 
-    if ($process->isRunning())
+    if (file_exists('/proc/'.$pid))
     {
       return true;
     }
@@ -179,16 +174,14 @@ abstract class AbstractForkCommand extends ContainerAwareCommand
 
     $this->logger->block('Stop process', 'daemon', 'fg=green');
     $pid = file_get_contents($this->pidFile);
-    $process = BackgroundProcess::createFromPID($pid);
     posix_kill($pid, SIGHUP);
 
     for ($i = 60; $i > 0; $i--)
     {
-      if ($process->isRunning())
+      if (file_exists('/proc/'.$pid))
       {
         if ($i <= 0)
         {
-          $process->stop();
           throw new \Error(sprintf('Process %s still running after 60 seconds', $pid));
           break;
         }
