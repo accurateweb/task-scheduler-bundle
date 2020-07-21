@@ -117,4 +117,9 @@ class MetaData implements \Serializable
     $this->options = (isset($data['options']) && is_array($data['options'])) ?
       $data['options'] : [];;
   }
+
+  public function __toString ()
+  {
+    return $this->serialize();
+  }
 }
